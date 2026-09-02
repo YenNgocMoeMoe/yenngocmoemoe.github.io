@@ -1,0 +1,16 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Dự án — Yến Ngọc">
+  <header class="page-intro section-pad">
+    <p class="eyebrow">Selected work · 2023—2026</p>
+    <h1>Những câu chuyện<br /><em>đã thành hình.</em></h1>
+    <p>Dự án công việc, cộng đồng và những thử nghiệm cá nhân mình đã có cơ hội đồng hành.</p>
+  </header>
+  <section class="archive-grid section-pad">
+    {projects.map((project, index) => <ProjectCard project={project} large={index % 3 === 0} />)}
+  </section>
+</BaseLayout>

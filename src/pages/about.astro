@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+<BaseLayout title="Về mình — Yến Ngọc">
+  <section class="about-page section-pad">
+    <div class="about-title">
+      <p class="eyebrow">About me</p>
+      <h1>{site.aboutTitle}</h1>
+    </div>
+    <div class="about-photo"><span>Thay bằng ảnh<br />chân dung ngang</span></div>
+    <div class="about-copy">
+      <p class="lead">{site.aboutLead}</p>
+      <p>{site.aboutBody}</p>
+      <h2>Mình có thể giúp với</h2>
+      <ul>{site.services.map((service) => <li>{service}</li>)}</ul>
+      <a class="button-link" href={`mailto:${site.email}`}>Liên hệ với mình ↗</a>
+    </div>
+  </section>
+</BaseLayout>

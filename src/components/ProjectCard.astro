@@ -1,0 +1,31 @@
+---
+interface Props {
+  project: {
+    id: string;
+    data: {
+      title: string;
+      summary: string;
+      year: number;
+      category: string;
+      role: string;
+      cover: string;
+      color: string;
+    };
+  };
+  large?: boolean;
+}
+const { project, large = false } = Astro.props;
+---
+
+<article class:list={['project-card', { large }]} style={`--card-color: ${project.data.color}`}>
+  <a class="project-image" href={`/projects/${project.id}/`} aria-label={`Xem dự án ${project.data.title}`}>
+    <img src={project.data.cover} alt="" loading="lazy" />
+    <span>View story ↗</span>
+  </a>
+  <div class="project-meta">
+    <p>{project.data.category} · {project.data.year}</p>
+    <p>{project.data.role}</p>
+  </div>
+  <h3><a href={`/projects/${project.id}/`}>{project.data.title}</a></h3>
+  <p class="project-summary">{project.data.summary}</p>
+</article>

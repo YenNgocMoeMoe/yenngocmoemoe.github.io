@@ -1,0 +1,18 @@
+---
+import { site } from '../data/site';
+---
+<footer class="site-footer section-pad">
+  <p class="eyebrow">Let’s make something meaningful</p>
+  <div class="footer-cta">
+    <h2>Có một câu chuyện<br />đáng được kể?</h2>
+    <a class="circle-link" href={`mailto:${site.email}`} aria-label="Gửi email">Gửi lời chào ↗</a>
+  </div>
+  <div class="footer-meta">
+    <p>© {new Date().getFullYear()} {site.name}</p>
+    <div>
+      <a href={site.social.facebook} target="_blank">Facebook ↗</a>
+      <a href={site.social.linkedin} target="_blank">LinkedIn ↗</a>
+    </div>
+    <p>Made with care in {site.location}</p>
+  </div>
+</footer>

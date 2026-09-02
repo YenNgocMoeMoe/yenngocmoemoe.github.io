@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+<BaseLayout title={`${project.data.title} — Yến Ngọc`} description={project.data.summary} image={project.data.cover}>
+  <article class="case-study">
+    <header class="case-header section-pad" style={`--project-color:${project.data.color}`}>
+      <p class="eyebrow">{project.data.category} · {project.data.year}</p>
+      <h1>{project.data.title}</h1>
+      <p class="case-summary">{project.data.summary}</p>
+      <dl>
+        <div><dt>Vai trò</dt><dd>{project.data.role}</dd></div>
+        {project.data.client && <div><dt>Đơn vị</dt><dd>{project.data.client}</dd></div>}
+        {project.data.duration && <div><dt>Thời gian</dt><dd>{project.data.duration}</dd></div>}
+      </dl>
+    </header>
+    <img class="case-cover" src={project.data.cover} alt={`Ảnh bìa dự án ${project.data.title}`} />
+    {project.data.impact.length > 0 && (
+      <div class="impact-grid section-pad">
+        {project.data.impact.map((item) => <div><strong>{item.value}</strong><span>{item.label}</span></div>)}
+      </div>
+    )}
+    <div class="prose"><Content /></div>
+    <nav class="case-next section-pad"><a href="/work">← Trở lại tất cả dự án</a></nav>
+  </article>
+</BaseLayout>

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#6688a5"/><circle cx="930" cy="180" r="92" fill="#e9cd73"/><path d="M0 710 210 480l180 120 200-360 180 350 160-260 270 380v190H0Z" fill="#263846"/><path d="M0 760h1200M100 680v80M330 680v80M610 680v80M870 680v80M1090 680v80" stroke="#f3efe6" stroke-width="8"/>
+  <text x="60" y="100" font-family="Arial" font-size="22" letter-spacing="5" fill="#f3efe6">A PERSONAL PHOTO ESSAY</text><text x="55" y="825" font-family="Georgia" font-size="92" font-style="italic" fill="#f3efe6">Sống cùng thành phố</text>
+</svg>

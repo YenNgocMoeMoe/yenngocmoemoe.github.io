@@ -1,0 +1,25 @@
+export const site = {
+  name: 'Yến Ngọc',
+  title: 'Yến Ngọc — Communication Portfolio',
+  description: 'Portfolio về truyền thông, nội dung và những dự án cộng đồng của Yến Ngọc.',
+  email: 'hello@example.com',
+  location: 'Vietnam',
+  disciplines: 'Communication · Content · Community',
+  hero: 'Mình kể những câu chuyện khiến người ta dừng lại, cảm nhận và tham gia.',
+  intro: 'Xin chào, mình là Yến Ngọc — một người làm truyền thông yêu những ý tưởng tử tế và những cộng đồng giàu sức sống.',
+  quote: 'Truyền thông đẹp nhất khi nó giúp một người cảm thấy mình được nhìn thấy.',
+  shortBio: 'Mình tìm kiếm những câu chuyện chân thành, biến chúng thành nội dung có sức sống và tạo nên những kết nối có ý nghĩa.',
+  aboutTitle: 'Mình là Yến Ngọc, một người làm truyền thông luôn tò mò.',
+  aboutLead: 'Mình tin rằng một câu chuyện được kể bằng sự chân thành có thể kéo mọi người lại gần nhau hơn.',
+  aboutBody: 'Thay đoạn này bằng phần giới thiệu khoảng 120–180 chữ: Ngọc đang làm gì, quan tâm đến chủ đề nào, thế mạnh nổi bật và kiểu dự án Ngọc muốn tham gia.',
+  services: [
+    'Content strategy & copywriting',
+    'Social media & creative production',
+    'Community communication',
+    'Campaign planning',
+  ],
+  social: {
+    facebook: 'https://facebook.com/',
+    linkedin: 'https://linkedin.com/',
+  },
+};

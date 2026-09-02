@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const posts = (await getCollection('writing')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title="Bài viết — Yến Ngọc">
+  <header class="page-intro section-pad">
+    <p class="eyebrow">Writing archive</p>
+    <h1>Chữ nghĩa &<br /><em>những quan sát nhỏ.</em></h1>
+    <p>Những điều mình nghĩ, cảm nhận và muốn lưu lại trong hành trình làm truyền thông.</p>
+  </header>
+  <section class="writing-archive section-pad">
+    {posts.map((post) => (
+      <a class="writing-card" href={`/writing/${post.id}/`}>
+        <img src={post.data.cover} alt="" loading="lazy" />
+        <p class="eyebrow">{post.data.topic} · {post.data.date.toLocaleDateString('vi-VN')}</p>
+        <h2>{post.data.title}</h2>
+        <p>{post.data.excerpt}</p>
+      </a>
+    ))}
+  </section>
+</BaseLayout>

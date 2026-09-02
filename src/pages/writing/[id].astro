@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<BaseLayout title={`${post.data.title} — Yến Ngọc`} description={post.data.excerpt} image={post.data.cover}>
+  <article class="article-page">
+    <header class="article-header section-pad">
+      <p class="eyebrow">{post.data.topic} · {post.data.date.toLocaleDateString('vi-VN')}</p>
+      <h1>{post.data.title}</h1>
+      <p>{post.data.excerpt}</p>
+    </header>
+    <img class="article-cover" src={post.data.cover} alt="" />
+    <div class="prose"><Content /></div>
+    {post.data.facebookUrl && <p class="source-link"><a href={post.data.facebookUrl} target="_blank">Đọc bài gốc trên Facebook ↗</a></p>}
+  </article>
+</BaseLayout>

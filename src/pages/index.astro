@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { site } from '../data/site';
+
+const projects = (await getCollection('projects', ({ data }) => data.featured))
+  .sort((a, b) => a.data.order - b.data.order);
+const posts = (await getCollection('writing'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <section class="hero section-pad">
+    <p class="eyebrow hero-kicker">{site.disciplines}</p>
+    <h1>{site.hero}</h1>
+    <div class="hero-bottom">
+      <p>{site.intro}</p>
+      <a href="#selected-work">Khám phá dự án <span>↓</span></a>
+    </div>
+    <div class="hero-stamp" aria-hidden="true">Based in<br />{site.location}<br />✦ {new Date().getFullYear()}</div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div>STRATEGY ✦ STORYTELLING ✦ SOCIAL CONTENT ✦ COMMUNITY ✦ CREATIVE PRODUCTION ✦&nbsp;</div>
+    <div>STRATEGY ✦ STORYTELLING ✦ SOCIAL CONTENT ✦ COMMUNITY ✦ CREATIVE PRODUCTION ✦&nbsp;</div>
+  </div>
+
+  <section class="work-section section-pad" id="selected-work">
+    <div class="section-heading">
+      <p class="eyebrow">01 · Selected work</p>
+      <h2>Những dự án<br />mình đặt cả trái tim vào.</h2>
+      <a class="text-link" href="/work">Xem tất cả dự án →</a>
+    </div>
+    <div class="project-grid">
+      {projects.map((project, index) => <ProjectCard project={project} large={index === 0} />)}
+    </div>
+  </section>
+
+  <section class="writing-section section-pad">
+    <div class="section-heading compact">
+      <p class="eyebrow">02 · Selected writing</p>
+      <h2>Chữ nghĩa &<br /><em>những quan sát nhỏ.</em></h2>
+      <a class="text-link" href="/writing">Đọc thêm →</a>
+    </div>
+    <div class="post-list">
+      {posts.map((post, index) => (
+        <a class="post-row" href={`/writing/${post.id}/`}>
+          <span class="post-number">0{index + 1}</span>
+          <img src={post.data.cover} alt="" loading="lazy" />
+          <div>
+            <p class="eyebrow">{post.data.topic} · {post.data.date.toLocaleDateString('vi-VN')}</p>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.excerpt}</p>
+          </div>
+          <span class="post-arrow">↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="about-teaser section-pad">
+    <div class="portrait-placeholder">
+      <span>Ảnh chân dung<br />của Ngọc</span>
+    </div>
+    <div>
+      <p class="eyebrow">03 · A little about me</p>
+      <blockquote>“{site.quote}”</blockquote>
+      <p>{site.shortBio}</p>
+      <a class="text-link" href="/about">Hiểu thêm về mình →</a>
+    </div>
+  </section>
+</BaseLayout>
