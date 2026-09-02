@@ -11,7 +11,8 @@ import { site } from '../data/site';
     <p>© {new Date().getFullYear()} {site.name}</p>
     <div>
       <a href={site.social.facebook} target="_blank">Facebook ↗</a>
-      <a href={site.social.linkedin} target="_blank">LinkedIn ↗</a>
+      {site.social.linkedin && <a href={site.social.linkedin} target="_blank">LinkedIn ↗</a>}
+      {site.cv && <a href={site.cv} target="_blank">CV ↗</a>}
     </div>
     <p>Made with care in {site.location}</p>
   </div>

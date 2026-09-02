@@ -1,9 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
 const posts = (await getCollection('writing')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<BaseLayout title="Bài viết — Yến Ngọc">
+<BaseLayout title={`Bài viết — ${site.name}`}>
   <header class="page-intro section-pad">
     <p class="eyebrow">Writing archive</p>
     <h1>Chữ nghĩa &<br /><em>những quan sát nhỏ.</em></h1>

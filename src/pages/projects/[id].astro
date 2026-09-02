@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -9,7 +10,7 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 ---
-<BaseLayout title={`${project.data.title} — Yến Ngọc`} description={project.data.summary} image={project.data.cover}>
+<BaseLayout title={`${project.data.title} — ${site.name}`} description={project.data.summary} image={project.data.cover}>
   <article class="case-study">
     <header class="case-header section-pad" style={`--project-color:${project.data.color}`}>
       <p class="eyebrow">{project.data.category} · {project.data.year}</p>

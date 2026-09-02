@@ -14,7 +14,7 @@ const posts = (await getCollection('writing'))
 <BaseLayout>
   <section class="hero section-pad">
     <p class="eyebrow hero-kicker">{site.disciplines}</p>
-    <h1>{site.hero}</h1>
+    <h1>{site.heroLead} <em>{site.heroAccent}</em> {site.heroEnd}</h1>
     <div class="hero-bottom">
       <p>{site.intro}</p>
       <a href="#selected-work">Khám phá dự án <span>↓</span></a>

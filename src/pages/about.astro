@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 ---
-<BaseLayout title="Về mình — Yến Ngọc">
+<BaseLayout title={`Về mình — ${site.name}`}>
   <section class="about-page section-pad">
     <div class="about-title">
       <p class="eyebrow">About me</p>
@@ -14,7 +14,12 @@ import { site } from '../data/site';
       <p>{site.aboutBody}</p>
       <h2>Mình có thể giúp với</h2>
       <ul>{site.services.map((service) => <li>{service}</li>)}</ul>
-      <a class="button-link" href={`mailto:${site.email}`}>Liên hệ với mình ↗</a>
+      <h2>Mình quan tâm đến</h2>
+      <ul>{site.interests.map((interest) => <li>{interest}</li>)}</ul>
+      <div class="about-actions">
+        <a class="button-link" href={`mailto:${site.email}`}>Liên hệ với mình ↗</a>
+        {site.cv && <a class="button-link secondary" href={site.cv} target="_blank">Xem CV ↗</a>}
+      </div>
     </div>
   </section>
 </BaseLayout>
