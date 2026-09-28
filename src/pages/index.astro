@@ -47,11 +47,16 @@ const projects = (await getCollection('projects', ({ data }) => data.featured))
       {writingLinks.map((post, index) => (
         <a class="post-row external-post" href={post.url} target="_blank" rel="noreferrer">
           <span class="post-number">0{index + 1}</span>
-          <span class="platform-mark" aria-hidden="true">f</span>
+          {post.available ? (
+            <img class="writing-thumb" src={post.cover} alt="" loading="lazy" />
+          ) : (
+            <span class="platform-mark" aria-hidden="true">f</span>
+          )}
           <div>
-            <p class="eyebrow">Published on {post.platform}</p>
+            <p class="eyebrow">{post.language} · Published on {post.platform}</p>
             <h3>{post.title}</h3>
             <p>{post.description}</p>
+            <p class="post-credit">{post.credit}</p>
           </div>
           <span class="post-arrow">↗</span>
         </a>
@@ -69,9 +74,7 @@ const projects = (await getCollection('projects', ({ data }) => data.featured))
   </section>
 
   <section class="about-teaser section-pad">
-    <div class="portrait-placeholder">
-      <span>Ảnh chân dung<br />của Ngọc</span>
-    </div>
+    <img class="portrait-placeholder" src="/images/anh-dai-dien.jpg" alt="Chân dung Nguyễn Yến Ngọc" loading="lazy" />
     <div>
       <p class="eyebrow">04 · A little about me</p>
       <blockquote>“{site.quote}”</blockquote>

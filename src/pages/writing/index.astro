@@ -12,13 +12,15 @@ import { writingLinks } from '../../data/writing';
   <section class="external-writing-grid section-pad">
     {writingLinks.map((post, index) => (
       <a class="external-writing-card" href={post.url} target="_blank" rel="noreferrer">
+        {post.available && <img class="external-writing-cover" src={post.cover} alt="" loading="lazy" />}
         <div class="external-card-top">
           <span>0{index + 1}</span>
           <span class="platform-mark" aria-hidden="true">f</span>
         </div>
-        <p class="eyebrow">Published on {post.platform}</p>
+        <p class="eyebrow">{post.language} · Published on {post.platform}</p>
         <h2>{post.title}</h2>
         <p>{post.description}</p>
+        <p class="external-credit">{post.credit}</p>
         <span class="external-cta">Đọc trên {post.platform} ↗</span>
       </a>
     ))}
