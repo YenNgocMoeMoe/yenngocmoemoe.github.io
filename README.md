@@ -70,32 +70,30 @@ Số liệu, phản hồi và những điều học được.
 
 ## 3. Thêm bài viết Facebook
 
-Tạo file `src/content/writing/ten-bai-viet.md`:
+Mở `src/data/writing.ts` và thêm một item vào `writingLinks`:
 
-```md
----
-title: "Tiêu đề bài viết"
-excerpt: "Một đoạn giới thiệu ngắn."
-date: 2026-09-02
-topic: "Góc nhìn"
-cover: "/images/writing/ten-bai.jpg"
-facebookUrl: "https://www.facebook.com/link-bai-goc"
----
-
-Dán nội dung bài viết vào đây. Mỗi đoạn cách nhau một dòng trống.
-
-## Tiêu đề phụ nếu có
-
-Có thể dùng **chữ đậm**, *chữ nghiêng* và chèn ảnh như bình thường.
+```ts
+{
+  title: 'Tên bài viết',
+  platform: 'Facebook',
+  description: 'Một câu giới thiệu ngắn.',
+  url: 'https://www.facebook.com/link-bai-goc',
+},
 ```
 
-## 4. Metadata và ảnh share Facebook
+Website chỉ giới thiệu và dẫn ra bài gốc, không tạo trang blog riêng.
+
+## 4. Thêm chứng nhận
+
+Đặt ảnh trong `public/images/certificates/`, cập nhật thông tin và chuyển `available` thành `true` trong `src/data/certificates.ts`.
+
+## 5. Metadata và ảnh share Facebook
 
 - Sửa `site` trong `astro.config.mjs` nếu đổi domain.
 - Thay `public/images/og-cover.svg` bằng ảnh 1200×630px.
 - Thay `public/favicon.svg` nếu muốn dùng logo riêng.
 
-## 5. Đăng lên GitHub Pages
+## 6. Đăng lên GitHub Pages
 
 Workflow `.github/workflows/deploy.yml` tự build và deploy khi push lên `main`. Trong GitHub, vào **Settings → Pages → Build and deployment → Source** và chọn **GitHub Actions**.
 

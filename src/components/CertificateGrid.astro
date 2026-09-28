@@ -1,0 +1,26 @@
+---
+import { certificates } from '../data/certificates';
+---
+
+<div class="certificate-grid">
+  {certificates.map((certificate, index) => (
+    <article class="certificate-card">
+      {certificate.available ? (
+        <a class="certificate-image" href={certificate.image} target="_blank" aria-label={`Xem chứng nhận ${certificate.title}`}>
+          <img src={certificate.image} alt={`Chứng nhận ${certificate.recognition} tại ${certificate.title}`} loading="lazy" />
+          <span>Xem đầy đủ ↗</span>
+        </a>
+      ) : (
+        <div class="certificate-placeholder" aria-label="Ảnh chứng nhận đang chờ được thêm">
+          <span>0{index + 1}</span>
+          <strong>{certificate.recognition}</strong>
+        </div>
+      )}
+      <div class="certificate-copy">
+        <p class="eyebrow">{certificate.year} · {certificate.recognition}</p>
+        <h2>{certificate.title}</h2>
+        <p>{certificate.issuer}</p>
+      </div>
+    </article>
+  ))}
+</div>

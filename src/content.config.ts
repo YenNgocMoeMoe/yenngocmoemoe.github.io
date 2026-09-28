@@ -20,16 +20,4 @@ const projects = defineCollection({
   }),
 });
 
-const writing = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/writing' }),
-  schema: z.object({
-    title: z.string(),
-    excerpt: z.string(),
-    date: z.coerce.date(),
-    topic: z.string(),
-    cover: z.string(),
-    facebookUrl: z.url().optional(),
-  }),
-});
-
-export const collections = { projects, writing };
+export const collections = { projects };

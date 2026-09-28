@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CertificateGrid from '../components/CertificateGrid.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout title={`Chứng nhận — ${site.name}`} description={`Các chứng nhận hoạt động và đóng góp cộng đồng của ${site.name}.`}>
+  <header class="page-intro section-pad">
+    <p class="eyebrow">Recognition & participation</p>
+    <h1>Những hành trình<br /><em>mình đã góp mặt.</em></h1>
+    <p>Mỗi chứng nhận là một dấu mốc nhỏ của quá trình học hỏi, cộng tác và đóng góp cho cộng đồng.</p>
+  </header>
+  <section class="certificate-archive section-pad">
+    <CertificateGrid />
+  </section>
+</BaseLayout>
